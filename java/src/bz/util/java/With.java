@@ -7,7 +7,10 @@ public abstract class With
 {
   public static <T> T object(T object, Consumer<T>... functionsWithObject)
   {
-    Arrays.stream(functionsWithObject).forEach(function->function.accept(object));
+    if(object!=null)
+    {
+      Arrays.stream(functionsWithObject).forEach(function->function.accept(object));
+    }
     return object;
   }
 }
