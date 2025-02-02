@@ -3,7 +3,7 @@ package bz.util.logger.model;
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
-import bz.util.logger.LogInterface;
+import bz.util.logger.LogExtension;
 
 public record Record
 (
@@ -18,7 +18,7 @@ public record Record
 )
 {
   public Record(
-      LogInterface logSource,
+      LogExtension logSource,
       Event event,
       Object[] keysAndValuesAndMaybeLevel
   )
@@ -55,7 +55,7 @@ public record Record
 
   public static int buildLevel(Object[] keysAndValuesAndMaybeLevel)
   {
-    if(keysAndValuesAndMaybeLevel.length%2==0) return LogInterface.INFO; //no level provided
+    if(keysAndValuesAndMaybeLevel.length%2==0) return LogExtension.INFO; //no level provided
 
     Object maybeLevel=keysAndValuesAndMaybeLevel[keysAndValuesAndMaybeLevel.length-1];
 
@@ -65,11 +65,11 @@ public record Record
     }
     catch(Exception e)
     {
-      return LogInterface.INFO;
+      return LogExtension.INFO;
     }
   }
 
-  private static final String logInterfaceFileName=LogInterface.class.getSimpleName()+".java";
+  private static final String logInterfaceFileName=LogExtension.class.getSimpleName()+".java";
 
   private static StackTraceElement buildStackTraceElement()
   {

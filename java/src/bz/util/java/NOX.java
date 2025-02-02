@@ -31,7 +31,7 @@ public abstract class NOX
 {
   public static class WrappedException extends RuntimeException
   {
-    protected WrappedException(@NonNull Throwable cause)
+    public WrappedException(@NonNull Throwable cause)
     {
       super(cause.getMessage(), cause);
     }

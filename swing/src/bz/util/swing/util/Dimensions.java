@@ -1,7 +1,9 @@
-package bz.util.swing;
+package bz.util.swing.util;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Insets;
+import javax.swing.JComponent;
 
 public class Dimensions
 {
@@ -9,6 +11,7 @@ public class Dimensions
   public static Dimension largest=new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE);
   public static Dimension widest=new Dimension(Integer.MAX_VALUE, 0);
   public static Dimension tallest=new Dimension(0, Integer.MAX_VALUE);
+  public static final Insets emptyInsets=new Insets(0, 0, 0, 0);
 
   public static Dimension changeWidth(Dimension original, int newWidth)
   {
@@ -95,6 +98,36 @@ public class Dimensions
     component.setPreferredSize(newValue);
     component.setMaximumSize(newValue);
   }
+
+  public static Insets componentInsets(Component component)
+  {
+    Insets insets;
+    if(component instanceof JComponent)
+    {
+      JComponent jComponent=(JComponent)component;
+      insets=jComponent.getInsets();
+    }
+    else
+    {
+      insets=emptyInsets;
+    }
+    return insets;
+  }
+
+  public static Dimension grossSize(Dimension netSize, Insets insets)
+  {
+    Dimension grossSize=new Dimension(
+        netSize.width+insets.left+insets.right,
+        netSize.height+insets.top+insets.bottom
+    );
+    return grossSize;
+  }
+
+  public static Dimension grossSize(Component component)
+  {
+    return grossSize(component.getPreferredSize(), componentInsets(component));
+  }
+
 
 
 

@@ -1,5 +1,6 @@
 package bz.util.swing;
 
+import bz.util.swing.util.Dimensions;
 import java.awt.Component;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;

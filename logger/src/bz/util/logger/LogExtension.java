@@ -6,7 +6,7 @@ import bz.util.logger.model.Record;
 /**
  * Implement this interface where you want to use methods.
  */
-public interface LogInterface
+public interface LogExtension
 {
   public static final int ALL=Integer.MIN_VALUE;
   public static final int VERBOSE=-20;
